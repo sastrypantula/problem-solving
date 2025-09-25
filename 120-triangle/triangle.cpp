@@ -1,5 +1,6 @@
 class Solution {
 public:
+// copied the solution but understood the Bottom up approach still needs to grind the problem 
     int t[201][201];
     int n;
     int solve(vector<vector<int>>& triangle, int row, int col) {

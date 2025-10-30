@@ -1,5 +1,6 @@
 class Solution {
 public:
+// GOOD problem next time think again for more time to get this approach /////
     int minNumberOperations(vector<int>& target) {
         int res=0;
         int prev=0;

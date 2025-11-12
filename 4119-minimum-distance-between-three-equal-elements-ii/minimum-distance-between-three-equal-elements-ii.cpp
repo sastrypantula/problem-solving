@@ -18,8 +18,8 @@ public:
                 // dist=min(dist,t);
                  if (value.size() >= 3) {
         auto it1 = value.begin();
-        auto it2 = std::next(it1);
-        auto it3 = std::next(it2);
+        auto it2 = next(it1);
+        auto it3 = next(it2);
 
         while (it3 != value.end()) {
             int a = *it1;
@@ -27,7 +27,7 @@ public:
             int c = *it3;
 
             int t = abs(a - b) + abs(b - c) + abs(c - a);
-            dist = std::min(dist, t);
+            dist = min(dist, t);
 
             ++it1;
             ++it2;

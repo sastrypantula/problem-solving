@@ -12,14 +12,16 @@ public:
         if(sum%k==0){
             return 0;
         }
-        int i=0;
-        int num=0;
-        while(num<sum){
-            i++;
-            num=k*i;
+        // int i=0;
+        // int num=0;
+        // while(num<sum){
+        //     i++;
+        //     num=k*i;
             
-        }
-        num=k*(i-1);
-        return abs(num-sum);
+        // }
+        // num=k*(i-1);
+        // return abs(num-sum);
+        int t=sum%k;
+        return t;
     }
 };

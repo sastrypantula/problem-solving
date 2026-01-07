@@ -47,9 +47,18 @@ public:
         int rightSubtreeSum = findTotalSum(root->right);
         int sum             = root->val + leftSubtreeSum + rightSubtreeSum;
         
-        maxP = max(maxP, (totalSum - sum) * sum);
-        
         return sum;
+    }
+    long solve(TreeNode* root){
+        if(root==NULL){
+            return 0;
+        }
+        long leftsum=solve(root->left);
+        long rightsum=solve(root->right);
+        long curr=root->val+leftsum+rightsum;
+        long s1=totalSum-curr;
+        maxP=max(maxP,s1*curr);
+        return curr;
     }
     
     int maxProduct(TreeNode* root) {
@@ -59,9 +68,7 @@ public:
         maxP = 0;
         
         totalSum = findTotalSum(root);
-        
-        
-        findTotalSum(root);
+        solve(root);
         
         return maxP%M;
     }

@@ -1,1 +1,1 @@
-<h2>construct-the-minimum-bitwise-array-ii Notes</h2><hr>[ Time taken: 3 hrs 58 m 3 s ]
+<h2>construct-the-minimum-bitwise-array-ii Notes</h2><hr>[ Time taken: 39 m 55 s ]

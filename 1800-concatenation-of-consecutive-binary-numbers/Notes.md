@@ -1,0 +1,1 @@
+<h2>concatenation-of-consecutive-binary-numbers Notes</h2><hr>[ Time taken: 1 hr 42 m 14 s ]

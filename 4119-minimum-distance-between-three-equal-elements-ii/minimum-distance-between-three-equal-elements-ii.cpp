@@ -1,45 +1,35 @@
 class Solution {
 public:
     int minimumDistance(vector<int>& nums) {
-        int dist=INT_MAX;
-        unordered_map<int,set<int>>mymap;
+        unordered_map<int,vector<int>> mymap;
         for(int i=0;i<nums.size();i++){
-            mymap[nums[i]].insert(i);
+            mymap[nums[i]].push_back(i);
         }
-        for(auto [key,value]:mymap){
-            // if(value.size()>=3){
-                // auto it=value.begin();
-                // int a=*it;
-                // it++;
-                // int b=*it;
-                //  it++;
-                // int c=*it;
-                // int t=abs(a-b)+abs(b-c)+abs(c-a);
-                // dist=min(dist,t);
-                 if (value.size() >= 3) {
-        auto it1 = value.begin();
-        auto it2 = next(it1);
-        auto it3 = next(it2);
-
-        while (it3 != value.end()) {
-            int a = *it1;
-            int b = *it2;
-            int c = *it3;
-
-            int t = abs(a - b) + abs(b - c) + abs(c - a);
-            dist = min(dist, t);
-
-            ++it1;
-            ++it2;
-            ++it3;
+        int n=nums.size();
+        int ans=INT_MAX;
+        for(auto it:mymap){
+            vector<int> temp=it.second;
+            int n1=temp.size();
+            if(temp.size()>=3){
+               int i=0;
+               int j=1;
+               int res=0;
+               while(j<n1){
+                    res=res+abs(temp[i]-temp[j]);
+                    if(j-i+1==3){
+                         res=res+abs(temp[i+1]-temp[j]);
+                         ans=min(ans,res);
+                         res=res-abs(temp[i]-temp[j]);
+                         res=res-abs(temp[i]-temp[i+1]);
+                         i++;
+                    }
+                    j++;
+               }
+            }
         }
-    }
-
-            
-        }
-        if(dist==INT_MAX){
+        if(ans==INT_MAX){
             return -1;
         }
-        return dist;
+        return ans;
     }
 };

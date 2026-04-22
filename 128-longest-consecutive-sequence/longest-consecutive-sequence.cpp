@@ -4,22 +4,32 @@ public:
         if(nums.size()==0){
             return 0;
         }
-        sort(nums.begin(),nums.end());
-        int ans=1;
-        int res=1;
-        for(int i=1;i<nums.size();i++){
-            if(nums[i]==nums[i-1]){
-                continue;
-            }
-            else if(nums[i]==nums[i-1]+1){
+         map<int,int> mymap;
+         for(int it:nums){
+            mymap[it]++;
+         }
+         int ans=0;
+         int res=0;
+         long long prev=-1e10;
+         for(auto it:mymap){
+            long long key=it.first;
+            int val=it.second;
+            if(prev==-1e10){
                 res++;
+                prev=key;
+            }
+            else if(key==prev+1){
+                res++;
+                prev=key;
             }
             else{
                 ans=max(ans,res);
                 res=1;
+                prev=key;
             }
-        }
-        ans=max(ans,res);
-        return ans;
+
+         }
+         ans=max(ans,res);
+         return ans;
     }
 };

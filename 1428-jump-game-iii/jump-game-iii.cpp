@@ -1,33 +1,28 @@
 class Solution {
 public:
-
-bool func(int i,int n,vector<int>& arr,vector<bool>& visited){
+int n;
+bool func(int i,vector<int>& arr,int target,vector<bool>& visited){
     if(i<0 || i>=n){
         return false;
     }
-if(arr[i]==0){
-    return true;
-}
-bool left=false;
-bool right=false;
-
-if(visited[i]==false){
+    if(arr[i]==target){
+        return true;
+    }
+    bool left=false;
+    if(i-arr[i]>=0 && visited[i-arr[i]]==false){
     visited[i]=true;
- left=func(i-arr[i],n,arr,visited);
- right=func(i+arr[i],n,arr,visited);
-}
-visited[i]=true;
-return left || right;
-
+    left=func(i-arr[i],arr,target,visited);
+    }
+    bool right=false;
+    if(i+arr[i]<n && visited[i+arr[i]]==false){
+        visited[i]=true;
+    right=func(i+arr[i],arr,target,visited);
+    }
+    return left||right;
 }
     bool canReach(vector<int>& arr, int start) {
-        int n=arr.size();
-         vector<bool> visited(n,false);
-        if(arr[start]==0){
-            return true;
-        }
-        int left=start-arr[start];
-        int right=start+arr[start];
-        return func(left,n,arr,visited) || func(right,n,arr,visited);
+        n=arr.size();
+        vector<bool> visited(n,false);
+        return func(start,arr,0,visited);
     }
 };

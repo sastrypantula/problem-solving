@@ -13,7 +13,7 @@ class Solution {
 public:
    unordered_map<int,vector<int>> mymap;
         unordered_map<int,int> freq;
-        TreeNode* func(int r,int v){
+        TreeNode* func(int r){
             TreeNode* root=new TreeNode(r);
             int a=-1;
             int b=-1;
@@ -39,13 +39,13 @@ public:
                 root->left=NULL;
             }
             else{
-                  root->left=func(a,1);
+                  root->left=func(a);
             }
             if(b==-1){
                 root->right=NULL;
             }
             else{
-                root->right=func(b,0);
+                root->right=func(b);
             }
             return root;
         }
@@ -66,7 +66,7 @@ public:
                 break;
             }
         }
-        return func(root,-1);
+        return func(root);
         
     }
 };

@@ -29,7 +29,7 @@ bool compare(string& s1,string& s2){
             for(auto& s2:wordList){
                 if(s1!=s2 && compare(s1,s2)){
                      mymap[s1].push_back(s2);
-                    mymap[s2].push_back(s1);
+                    
                 }
             }
         }
